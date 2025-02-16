@@ -1,7 +1,8 @@
 import "./App.css";
+import {UserManagementSystem} from "./views/user_management_system";
 
 function App() {
-  return <h2>Good Luck!!!</h2>;
+  return <UserManagementSystem/>;
 }
 
 export default App;

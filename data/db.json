@@ -1,6 +1,29 @@
 {
   "users": [
     {
+      "id": 1,
+      "name": "Clare Blondi",
+      "username": "4NonBlondies",
+      "email": "blondi@gmail.com",
+      "address": {
+        "street": "Victor Plains",
+        "suite": "Suite 879",
+        "city": "Wisokyburgh",
+        "zipcode": "90566-7771",
+        "geo": {
+          "lat": "-43.9509",
+          "lng": "-34.4618"
+        }
+      },
+      "phone": "021-702-6593 x01234",
+      "website": "anastasia.net",
+      "company": {
+        "name": "Deckow-Crist",
+        "catchPhrase": "Proactive didactic contingency",
+        "bs": "synergize scalable supply-chains"
+      }
+    },
+    {
       "id": 2,
       "name": "Ervin Howell",
       "username": "Antonette",
@@ -206,6 +229,19 @@
         "catchPhrase": "Centralized empowering task-force",
         "bs": "target end-to-end models"
       }
+    },
+    {
+      "name": "Test",
+      "username": "Test123",
+      "email": "test@gmail.com",
+      "phone": "+355 69 76 76 657",
+      "address": {
+        "street": "ERTE5T",
+        "suite": "S5Y",
+        "city": "Tirana",
+        "zipcode": "12341"
+      },
+      "id": 11
     }
   ]
 }
