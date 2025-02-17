@@ -14,8 +14,8 @@ const ModalTitle = styled.div`
 const Divider = styled.hr`
   border: none;
   border-bottom: 1px solid #e8e8e8;
-  margin: 0 -24px 24px -24px; /* Negative margins to extend full width */
-  width: calc(100% + 48px); /* Compensate for the padding */
+  margin: 0 -24px 24px -24px; 
+  width: calc(100% + 48px);
 `;
 
 const StyledModalWrapper = styled(Modal)`

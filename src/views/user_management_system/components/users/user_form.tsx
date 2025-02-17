@@ -3,10 +3,10 @@ import { Form, FormProps, Input, Button } from 'antd';
 import { User } from '../../../../types/user';
 import { FORM_VALIDATION_MESSAGES } from '../../../../utils/constants';
 import styled from 'styled-components';
-import { 
-  emailValidator, 
-  phoneValidator, 
-  zipCodeValidator 
+import {
+  emailValidator,
+  phoneValidator,
+  zipCodeValidator
 } from '../../../../utils/validators';
 import { ActionButton } from '../../../../components/action_button';
 
@@ -126,7 +126,7 @@ export const UserForm: React.FC<UserFormProps> = ({
           zipcode: values.zipcode,
         },
       };
-      
+
       delete formattedValues.street;
       delete formattedValues.suite;
       delete formattedValues.city;
@@ -145,7 +145,7 @@ export const UserForm: React.FC<UserFormProps> = ({
       layout="vertical"
       requiredMark={false}
       onFinish={handleFinish}
-      validateTrigger={['onBlur', 'onChange']} 
+      validateTrigger={['onBlur', 'onChange']}
     >
       <div className="form-row">
         <Form.Item
@@ -157,11 +157,29 @@ export const UserForm: React.FC<UserFormProps> = ({
         </Form.Item>
 
         <Form.Item
+          name="street"
+          label="Address"
+          rules={[{ required: true, message: FORM_VALIDATION_MESSAGES.required }]}
+        >
+          <Input placeholder="Reter 43" maxLength={100} />
+        </Form.Item>
+      </div>
+
+      <div className="form-row">
+        <Form.Item
           name="username"
           label="Username"
           rules={[{ required: true, message: FORM_VALIDATION_MESSAGES.required }]}
         >
           <Input placeholder="johngonzales13" />
+        </Form.Item>
+
+        <Form.Item
+          name="city"
+          label="City"
+          rules={[{ required: true, message: FORM_VALIDATION_MESSAGES.required }]}
+        >
+          <Input placeholder="Tirana" maxLength={50} />
         </Form.Item>
       </div>
 
@@ -173,54 +191,12 @@ export const UserForm: React.FC<UserFormProps> = ({
             { required: true, message: FORM_VALIDATION_MESSAGES.required },
             { validator: emailValidator },
           ]}
-          validateTrigger={['onBlur']} 
-        >
-          <Input 
-            placeholder="johngonzales1332@gmail.com"
-            type="email" 
-          />
-        </Form.Item>
-
-        <Form.Item
-          name="phone"
-          label="Phone"
-          rules={[
-            { required: true, message: FORM_VALIDATION_MESSAGES.required },
-            { validator: phoneValidator },
-          ]}
           validateTrigger={['onBlur']}
         >
-          <Input 
-            placeholder="+355 69 76 76 654"
-            maxLength={20}
+          <Input
+            placeholder="johngonzales1332@gmail.com"
+            type="email"
           />
-        </Form.Item>
-      </div>
-
-      <div className="form-row">
-        <Form.Item
-          name="street"
-          label="Street"
-          rules={[{ required: true, message: FORM_VALIDATION_MESSAGES.required }]}
-        >
-          <Input placeholder="Reter 43" maxLength={100} />
-        </Form.Item>
-
-        <Form.Item
-          name="suite"
-          label="Suite"
-        >
-          <Input placeholder="Apt 4B" maxLength={50} />
-        </Form.Item>
-      </div>
-
-      <div className="form-row">
-        <Form.Item
-          name="city"
-          label="City"
-          rules={[{ required: true, message: FORM_VALIDATION_MESSAGES.required }]}
-        >
-          <Input placeholder="Tirana" maxLength={50} />
         </Form.Item>
 
         <Form.Item
@@ -236,11 +212,35 @@ export const UserForm: React.FC<UserFormProps> = ({
         </Form.Item>
       </div>
 
+      <div className="form-row">
+        <Form.Item
+          name="phone"
+          label="Phone Nr"
+          rules={[
+            { required: true, message: FORM_VALIDATION_MESSAGES.required },
+            { validator: phoneValidator },
+          ]}
+          validateTrigger={['onBlur']}
+        >
+          <Input
+            placeholder="+355 69 76 76 654"
+            maxLength={20}
+          />
+        </Form.Item>
+
+        <Form.Item
+          name="suite"
+          label="Suite"
+        >
+          <Input placeholder="Apt 4B" maxLength={50} />
+        </Form.Item>
+      </div>
+
       <div className="submit-button">
-        <Button onClick={onCancel} style={{ marginRight: 8 }}>
+        <Button onClick={onCancel}>
           Cancel
         </Button>
-        <ActionButton type="primary" htmlType="submit" style={{height: "10px !important"}}>
+        <ActionButton type="primary" htmlType="submit" style={{ height: "10px !important" }}>
           Save
         </ActionButton>
       </div>
