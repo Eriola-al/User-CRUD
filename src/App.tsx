@@ -1,4 +1,3 @@
-import "./App.css";
 import {UserManagementSystem} from "./views/user_management_system";
 
 function App() {

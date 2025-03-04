@@ -1,4 +1,4 @@
-import { User } from "../../../../types/user";
+import { User } from "../../../types/user";
 
 export const columns = [
   { 
@@ -44,10 +44,5 @@ export const columns = [
     render: (_: unknown, record: User) => 
       `${record.address.street}, ${record.address.city}`
   },
-  {
-    title: 'Actions',
-    key: 'actions',
-    width: '10%',
-    className: 'column-center'
-  },
 ];
+

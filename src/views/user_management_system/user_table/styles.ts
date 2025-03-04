@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Table } from 'antd';
 import type { TableProps } from 'antd';
-import { User } from '../../../../types/user';
-import { ActionButton } from '../../../../components/action_button';
+import { User } from '../../../types/user';
+import { ActionButton } from '../../../components/action_button';
 
 export const Container = styled.div`
   padding: 20px;

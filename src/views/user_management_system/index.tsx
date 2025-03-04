@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { User } from '../../types/user';
 import { useUsers } from '../../hooks/useUsers';
-import { UserTable } from '../user_management_system/components/users/user_table';
-import { UserForm } from '../user_management_system/components/users/user_form';
+import { UserTable } from './user_table';
+import { UserForm } from '../../views/user_management_system/user_form/index';
 import { StyledModal } from '../../components/styled_modal';
-import { Container, Header } from '../user_management_system/components/users/styles';
+import { Container, Header } from '../../views/user_management_system/user_table/styles';
+import { CreateUserButton } from '../../views/user_management_system/user_table/styles'
+import { Empty } from 'antd';
 
 export const UserManagementSystem: React.FC = () => {
   const { users, loading, fetchUsers, createUser, updateUser, deleteUser } = useUsers();
@@ -41,18 +42,20 @@ export const UserManagementSystem: React.FC = () => {
       handleModalClose();
     }
   };
+  
+
+  if (!users) return <Empty />;
 
   return (
     <Container>
       <Header>
-        <Button
-          style={{ fontWeight: 500, backgroundColor: "#E33131" }}
+        <CreateUserButton
           type="primary"
-          icon={<PlusOutlined style={{ fontSize: 13 }} />}
+          icon={<PlusOutlined/>}
           onClick={handleCreateClick}
         >
           Create New User
-        </Button>
+        </CreateUserButton>
       </Header>
 
       <UserTable

@@ -1,91 +1,14 @@
-import React, { useEffect } from 'react';
-import { Form, FormProps, Input, Button } from 'antd';
-import { User } from '../../../../types/user';
-import { FORM_VALIDATION_MESSAGES } from '../../../../utils/constants';
-import styled from 'styled-components';
+import React from 'react';
+import { Form, Input, Button } from 'antd';
+import { User } from '../../../types/user';
+import { FORM_VALIDATION_MESSAGES } from '../../../utils/constants';
 import {
   emailValidator,
   phoneValidator,
   zipCodeValidator
-} from '../../../../utils/validators';
-import { ActionButton } from '../../../../components/action_button';
-
-const TypedForm = Form as unknown as React.FC<FormProps<Partial<User>>>;
-
-const TwoColumnForm = styled(TypedForm)`
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  .full-width {
-    grid-column: 1 / -1;
-  }
-
-  .submit-button {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 24px;
-    
-    @media (min-width: 768px) {
-      flex-direction: row;
-      justify-content: flex-end;
-      gap: 16px;
-    }
-
-    .ant-btn {
-      width: 100%;
-      height: 40px;
-      
-      @media (min-width: 768px) {
-        width: 120px;
-      }
-    }
-
-    .ant-btn-primary {
-      background-color: #E33131;
-      border-color: #E33131;
-      order: -1;
-      
-      @media (min-width: 768px) {
-        order: 0;
-      }
-    }
-
-    .ant-btn-primary:hover {
-      background-color: #E33131 !important;
-      border-color: #E33131 !important;
-    }
-  }
-
-  .ant-form-item {
-    margin-bottom: 16px;
-  }
-
-  .ant-input {
-    padding: 8px 12px;
-    border-radius: 4px;
-    
-    &::placeholder {
-      color: #9CA3AF;
-    }
-  }
-
-  .ant-form-item-label {
-    padding-bottom: 4px;
-    
-    label {
-      font-size: 14px;
-      font-weight: 500;
-    }
-  }
-`;
+} from '../../../utils/validators';
+import { ActionButton } from '../../../components/action_button';
+import { TwoColumnForm } from './styles';
 
 interface UserFormProps {
   initialValues?: Partial<User>;
@@ -99,21 +22,6 @@ export const UserForm: React.FC<UserFormProps> = ({
   onCancel,
 }) => {
   const [form] = Form.useForm<Partial<User>>();
-
-  useEffect(() => {
-    if (initialValues) {
-      const flattenedValues = {
-        ...initialValues,
-        street: initialValues.address?.street,
-        suite: initialValues.address?.suite,
-        city: initialValues.address?.city,
-        zipcode: initialValues.address?.zipcode,
-      };
-      form.setFieldsValue(flattenedValues);
-    } else {
-      form.resetFields();
-    }
-  }, [initialValues, form]);
 
   const handleFinish = async (values: any) => {
     try {
@@ -145,6 +53,13 @@ export const UserForm: React.FC<UserFormProps> = ({
       layout="vertical"
       requiredMark={false}
       onFinish={handleFinish}
+      initialValues={{
+        ...initialValues,
+        street: initialValues?.address?.street,
+        suite: initialValues?.address?.suite,
+        city: initialValues?.address?.city,
+        zipcode: initialValues?.address?.zipcode,
+      }}
       validateTrigger={['onBlur', 'onChange']}
     >
       <div className="form-row">
